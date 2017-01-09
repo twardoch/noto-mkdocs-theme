@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -44,7 +44,7 @@ export default class Application {
    */
   initialize() {
 
-    /* Initialize Modernizr and Fastclick */
+    /* Initialize Modernizr and FastClick */
     new Material.Event.Listener(document, "DOMContentLoaded", () => {
 
       /* Test for iOS */
@@ -60,7 +60,7 @@ export default class Application {
       /* Attack FastClick to mitigate 300ms delay on touch devices */
       FastClick.attach(document.body)
 
-      /* Wrap all data tables */
+      /* Wrap all data tables for better overflow scrolling */
       const tables = document.querySelectorAll("table:not([class])")
       Array.prototype.forEach.call(tables, table => {
         const wrap = document.createElement("div")
@@ -101,7 +101,7 @@ export default class Application {
         ], new Material.Sidebar.Container("[data-md-component=container]")))
 
     /* Component: sidebar with navigation */
-    new Material.Event.MatchMedia("(min-width: 1200px)",
+    new Material.Event.MatchMedia("(min-width: 1220px)",
       new Material.Event.Listener(window, [
         "scroll", "resize", "orientationchange"
       ], new Material.Sidebar.Position("[data-md-component=navigation]")))
@@ -121,13 +121,13 @@ export default class Application {
     const collapsibles =
       document.querySelectorAll("[data-md-component=collapsible]")
     Array.prototype.forEach.call(collapsibles, collapse => {
-      new Material.Event.MatchMedia("(min-width: 1200px)",
+      new Material.Event.MatchMedia("(min-width: 1220px)",
         new Material.Event.Listener(collapse.previousElementSibling, "click",
           new Material.Nav.Collapse(collapse)))
     })
 
-    /* Component: pane monitor for iOS scrolling fixes */
-    new Material.Event.MatchMedia("(max-width: 1199px)",
+    /* Component: active pane monitor for iOS scrolling fixes */
+    new Material.Event.MatchMedia("(max-width: 1219px)",
       new Material.Event.Listener(
         "[data-md-component=navigation] [data-md-toggle]", "change",
           new Material.Nav.Scrolling("[data-md-component=navigation] nav")))
@@ -141,8 +141,9 @@ export default class Application {
     new Material.Event.Listener(document.forms.search.query, [
       "focus", "keyup"
     ], new Material.Search.Result("[data-md-component=result]", () => {
-      return fetch(`${this.config_.url.base}/mkdocs/search_index.json`)
-        .then(response => response.json())
+      return fetch(`${this.config_.url.base}/mkdocs/search_index.json`, {
+        credentials: "same-origin"
+      }).then(response => response.json())
         .then(data => {
           return data.docs.map(doc => {
             doc.location = this.config_.url.base + doc.location
@@ -152,7 +153,7 @@ export default class Application {
     })).listen()
 
     /* Listener: prevent touches on overlay if navigation is active */
-    new Material.Event.MatchMedia("(max-width: 1199px)",
+    new Material.Event.MatchMedia("(max-width: 1219px)",
       new Material.Event.Listener("[data-md-component=overlay]", "touchstart",
         ev => ev.preventDefault()))
 
@@ -219,7 +220,7 @@ export default class Application {
       new Material.Event.Listener("[data-md-component=search]", "click",
         ev => ev.stopPropagation()))
 
-    /* Retrieve the facts for the given repository type */
+    /* Retrieve facts for the given repository type */
     ;(() => {
       const el = document.querySelector("[data-md-source]")
       if (!el) return Promise.resolve([])

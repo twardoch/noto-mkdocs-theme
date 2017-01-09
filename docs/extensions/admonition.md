@@ -2,7 +2,7 @@
 
 [Admonition][1] is an extension included in the standard Markdown library that
 makes it possible to add block-styled side content to your documentation, for
-example summaries, hints, notes or warnings.
+example summaries, notes, hints or warnings.
 
   [1]: https://pythonhosted.org/Markdown/extensions/admonition.html
 
@@ -18,14 +18,14 @@ markdown_extensions:
 ## Usage
 
 Admonition blocks follow a simple syntax: every block is started with `!!!`,
-followed by a single keyword which is used as the [type qualifier](#types) of
-the block. The content of the block then follows on the next line, indented by
+followed by a single keyword which is used as the [type qualifier][2] of the
+block. The content of the block then follows on the next line, indented by
 four spaces.
 
 Example:
 
 ``` markdown
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -33,10 +33,12 @@ Example:
 
 Result:
 
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+  [2]: #types
 
 ### Changing the title
 
@@ -46,7 +48,7 @@ easily be changed by adding a quoted string after the type qualifier.
 Example:
 
 ``` markdown
-!!! hint "Phasellus posuere in sem ut cursus"
+!!! note "Phasellus posuere in sem ut cursus"
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -54,20 +56,20 @@ Example:
 
 Result:
 
-!!! hint "Phasellus posuere in sem ut cursus"
+!!! note "Phasellus posuere in sem ut cursus"
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
 ### Removing the title
 
-Similar to setting a [custom title](#changing-the-title), the icon and title
-can be omitted by providing an empty string after the type qualifier:
+Similar to setting a [custom title][3], the icon and title can be omitted by
+providing an empty string after the type qualifier:
 
 Example:
 
 ``` markdown
-!!! hint ""
+!!! note ""
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -75,10 +77,12 @@ Example:
 
 Result:
 
-!!! hint ""
+!!! note ""
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+
+  [3]: #changing-the-title
 
 ### Embedded code blocks
 
@@ -86,16 +90,16 @@ Blocks can contain all kinds of text content, including headlines, lists,
 paragraphs and other blocks – except code blocks, because the parser from the
 standard Markdown library does not account for those.
 
-However, the [PyMdown Extensions][2] package adds an extension called
-[SuperFences][3], which makes it possible to nest code blocks within other
+However, the [PyMdown Extensions][4] package adds an extension called
+[SuperFences][5], which makes it possible to nest code blocks within other
 blocks.
 
-  [2]: https://facelessuser.github.io/pymdown-extensions
-  [3]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
+  [4]: https://facelessuser.github.io/pymdown-extensions
+  [5]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 Example:
 
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -125,14 +129,16 @@ Example:
 Admonition supports user-defined type qualifiers which may influence the style
 of the inserted block. Following is a list of type qualifiers supported by the
 Material theme, whereas the default type, and thus fallback for unknown type
-qualifiers, is [hint](#hint).
+qualifiers, is [note][6].
 
-### Hint
+  [6]: #note
+
+### Note
 
 Example:
 
 ``` markdown
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -140,15 +146,15 @@ Example:
 
 Result:
 
-!!! hint
+!!! note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
 Qualifiers:
 
-* `hint`
 * `note`
+* `seealso`
 
 ### Summary
 
@@ -194,7 +200,8 @@ Result:
 Qualifiers:
 
 * `tip`
-* `idea`
+* `hint`
+* `important`
 
 ### Success
 
@@ -241,8 +248,8 @@ Result:
 Qualifiers:
 
 * `warning`
+* `caution`
 * `attention`
-* `important`
 
 ### Failure
 
@@ -289,14 +296,14 @@ Result:
 Qualifiers:
 
 * `danger`
-* `caution`
+* `error`
 
-### Error
+### Bug
 
 Example:
 
 ``` markdown
-!!! error
+!!! bug
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
@@ -304,12 +311,11 @@ Example:
 
 Result:
 
-!!! error
+!!! bug
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 
 Qualifiers:
 
-* `error`
 * `bug`

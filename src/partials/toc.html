@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -20,6 +20,8 @@
   IN THE SOFTWARE.
 -->
 
+{% import "partials/i18n.html" as i18n %}
+
 <!-- Table of contents -->
 <nav class="md-nav md-nav--secondary">
   {% set toc_ = page.toc %}
@@ -36,7 +38,7 @@
 
   <!-- Render item list -->
   {% if toc_ and (toc_ | first) %}
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="toc">{{ i18n.t('toc.title') }}</label>
     <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc_ %}
         {% include "partials/toc-item.html" %}

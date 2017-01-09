@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -47,7 +47,7 @@
 
   // Addition
   ins.critic {
-    background-color: $codehilite-diff-inserted;
+    background-color: $codehilite-diff-inserted;                                // TODO: dependent on order of inclusion
     box-shadow:
       +0.25em 0 0 $codehilite-diff-inserted,
       -0.25em 0 0 $codehilite-diff-inserted;

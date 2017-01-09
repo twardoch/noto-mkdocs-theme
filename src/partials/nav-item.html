@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -42,13 +42,13 @@
         {{ nav_item.title}}
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
+        {% set base = path %}
 
         <!-- Render nested item list -->
         {% for nav_item in nav_item.children %}
-          {% set temp = path %}
-          {% set path = path + "-" + loop.index | string %}
-          {% include "partials/nav-item.html" %}
-          {% set path = temp %}
+          {% with path = base + "-" + loop.index | string %}
+            {% include "partials/nav-item.html"  %}
+          {% endwith %}
         {% endfor %}
       </ul>
     </nav>
