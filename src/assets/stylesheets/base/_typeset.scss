@@ -361,8 +361,10 @@ kbd {
     }
   }
 
-  // Limit images to container
-  img {
+  // Limit width to container
+  iframe,
+  img,
+  svg {
     max-width: 100%;
   }
 
@@ -409,6 +411,11 @@ kbd {
     // Remove top border on first row
     tr:first-child td {
       border-top: 0;
+    }
+
+    // Do not wrap links in tables
+    a {
+      word-break: normal;
     }
   }
 
