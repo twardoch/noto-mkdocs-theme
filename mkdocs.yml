@@ -20,7 +20,7 @@
 
 # Project information
 site_name: Material for MkDocs
-site_description: A material design theme for MkDocs
+site_description: A Material Design theme for MkDocs
 site_author: Martin Donath
 site_url: http://squidfunk.github.io/mkdocs-material/
 
@@ -39,9 +39,6 @@ extra:
   palette:
     primary: indigo
     accent: indigo
-  font:
-    text: Roboto
-    mono: Roboto Mono
   social:
     - type: github-alt
       link: https://github.com/squidfunk
@@ -61,7 +58,8 @@ markdown_extensions:
   - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
   - pymdownx.critic
-  - pymdownx.githubemoji
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -76,11 +74,12 @@ pages:
   - Getting started: getting-started.md
   - Extensions:
     - Admonition: extensions/admonition.md
-    - Codehilite: extensions/codehilite.md
+    - CodeHilite: extensions/codehilite.md
     - Footnotes: extensions/footnotes.md
     - Permalinks: extensions/permalinks.md
     - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md
   - Customization: customization.md
+  - Release notes: release-notes.md
   - Contributing: contributing.md
   - License: license.md

@@ -31,13 +31,13 @@
       {% endif %}
     {% endblock %}
     {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr-dadbf8711d.js"></script>
+      <script src="{{ base_url }}/assets/javascripts/modernizr-9f4ef1018a.js"></script>
     {% endblock %}
     {% block fonts %}
       {% include "partials/fonts.html" %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-96d55a1439.css">
+      <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-ff220fd69d.css">
       {% if config.extra.palette %}
         <link rel="stylesheet" href="{{ base_url }}/assets/stylesheets/application-02ce7adcc2.palette.css">
       {% endif %}
@@ -105,12 +105,6 @@
       {% endblock %}
     </div>
     {% block scripts %}
-      {% for extension in config.markdown_extensions %}
-        {% if extension == "pymdownx.arithmatex" %}
-          {% set path = "mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" %}
-          <script src="https://cdn.mathjax.org/{{ path }}"></script>
-        {% endif %}
-      {% endfor %}
       <script src="{{ base_url }}/assets/javascripts/application-ca9b3745c3.js"></script>
       <script>var config={url:{base:"{{ base_url }}"}},app=new Application(config);app.initialize()</script>
       {% for path in extra_javascript %}

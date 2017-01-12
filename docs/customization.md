@@ -29,12 +29,13 @@ touch docs/stylesheets/extra.css
 Then, add the following line to your `mkdocs.yml`:
 
 ``` yaml
-extra_css: ['stylesheets/extra.css']
+extra_css:
+  - 'stylesheets/extra.css'
 ```
 
 Spin up the development server with `mkdocs serve` and start typing your
 changes in your additional stylesheet file – you can see them instantly after
-saving, as the MkDocs development server implements live reloading. Cool, huh?
+saving, as the MkDocs development server implements live reloading.
 
 ### Additional JavaScript
 
@@ -50,7 +51,8 @@ touch docs/javascripts/extra.js
 Then, add the following line to your `mkdocs.yml`:
 
 ``` yaml
-extra_javascript: ['javascripts/extra.js']
+extra_javascript:
+  - 'javascripts/extra.js'
 ```
 
 Further assistance can be found in the [MkDocs documentation][2].

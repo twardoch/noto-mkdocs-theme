@@ -1,7 +1,7 @@
 # CodeHilite
 
-[CodeHilite][1] is an extension that adds syntax highlighting to codeblocks and
-is included in the standard Markdown library. The highlighting process is
+[CodeHilite][1] is an extension that adds syntax highlighting to code blocks
+and is included in the standard Markdown library. The highlighting process is
 executed during compilation of the Markdown file.
 
   [1]: https://pythonhosted.org/Markdown/extensions/code_hilite.html
@@ -23,6 +23,14 @@ To enable CodeHilite, add the following lines to your `mkdocs.yml`:
 markdown_extensions:
   - codehilite
 ```
+
+!!! warning "Migrating from Material 0.2.x"
+
+    In 0.2.x the CodeHilite extension was included with
+    `codehilite(css_class=code)` which switched the CSS class from
+    `.codehilite` to `.code`. The current version of the theme doesn't require
+    that and defines styles for the default `.codehilite` class, so the part
+    `css_class=code` needs to be removed.
 
   [2]: http://pygments.org
   [3]: http://pygments.org/languages
@@ -613,7 +621,7 @@ module.exports = _extends(exports['default'], exports);
 {
   "name": "mkdocs-material",
   "version": "0.2.4",
-  "description": "A material design theme for MkDocs",
+  "description": "A Material Design theme for MkDocs",
   "homepage": "http://squidfunk.github.io/mkdocs-material/",
   "authors": [
     "squidfunk <martin.donath@squidfunk.com>"
